@@ -3,7 +3,7 @@
   cursor: pointer;
   border: 0;
   border-radius: 3em;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1;
   font-family: var(--Font-Family-Base);
   border-radius: var(--Button-Primary-Border-Radius);
@@ -13,10 +13,23 @@
   border: 1px solid var(--Button-Primary-Default);
   color: var(--White);
 }
+.button--primary:hover {
+  background-color: var(--Button-Primary-Hover);
+  border: 1px solid var(--Button-Primary-Hover);
+  color: var(--White);
+}
+.button--primary.outline {
+  background-color: var(--White);
+  color: var(--Button-Primary-Default);
+}
 .button--secondary {
   background-color: var(--Button-Secondary-Default);
   border: 1px solid var(--Button-Secondary-Default);
   color: var(--White);
+}
+.button--secondary.outline {
+  background-color: var(--White);
+  color: var(--Button-Secondary-Default);
 }
 .button--small {
   padding: 10px 16px;
@@ -27,6 +40,10 @@
   font-size: 14px;
 }
 .button--large {
-  padding: 12px 24px;
-  font-size: 16px;
+  padding: 6px 12px;
+  font-size: 20px;
+  min-height: 40px;
+}
+.button__icon {
+  margin-right: 8px
 }

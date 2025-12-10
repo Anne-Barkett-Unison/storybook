@@ -4,39 +4,37 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './button.css';
 
 export interface ButtonProps {
-  /** Is this the principal call to action on the page? */
   primary?: boolean;
-  /** What background color to use */
+  outline?: boolean;
   backgroundColor?: string;
-  /** How large should the button be? */
   size?: 'small' | 'medium' | 'large';
-  /** Button contents */
   label: string;
-  /** Optional click handler */
-  showIcon?: boolean;
+  leftIcon?: boolean;
   onClick?: () => void;
 }
 
 /** Primary UI component for user interaction */
 export const Button = ({
   primary = false,
+  outline = false,
   size = 'medium',
   backgroundColor,
-  showIcon = false,
+  leftIcon = false,
   label,
   ...props
 }: ButtonProps) => {
   const mode = primary ? 'button--primary' : 'button--secondary';
+  const border = outline ? 'outline' : '';
   return (
      <button
       type="button"
-      className={['button', `button--${size}`, mode].join(' ')}
+      className={['button', `button--${size}`, mode, border].join(' ')}
       style={{ backgroundColor }}
       {...props}
     >
-      {showIcon && (
+      {leftIcon && (
         <span className="button__icon">
-         <FontAwesomeIcon icon="star" />
+         <FontAwesomeIcon icon="star" size="1x"/>
         </span>
       )}
       {label}

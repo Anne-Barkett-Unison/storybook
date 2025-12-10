@@ -56,12 +56,12 @@ export const Primary: Story = {
     label: 'Button',
   },
   parameters: {
-    css: extractCSSForClasses(CSS, ['button', 'button--primary']),
+    css: extractCSSForClasses(CSS, ['button', 'button--primary', 'button--primary:hover']),
     docs: {
       source: {
         code: generateHTMLWithCSS(
           { label: 'Button' },
-          ['button', 'button--primary']
+          ['button', 'button--primary', 'button--primary:hover']
         ),
       },
     },
@@ -73,7 +73,7 @@ export const Secondary: Story = {
     label: 'Button',
   },
   parameters: {
-    css: extractCSSForClasses(CSS, ['storybook-button', 'storybook-button--secondary']),
+    css: extractCSSForClasses(CSS, ['button', 'button--secondary']),
   },
 };
 
@@ -83,7 +83,7 @@ export const Large: Story = {
     label: 'Button',
   },
   parameters: {
-    css: extractCSSForClasses(CSS, ['storybook-button', 'storybook-button--large']),
+    css: extractCSSForClasses(CSS, ['button', 'button--large']),
   }
 };
 
@@ -93,6 +93,27 @@ export const Small: Story = {
     label: 'Button',
   },
   parameters: {
-    css: extractCSSForClasses(CSS, ['storybook-button', 'storybook-button--small']),
+    css: extractCSSForClasses(CSS, ['button', 'button--small']),
+  }
+};
+
+export const LeftIcon: Story = {
+  args: {
+    primary: true,
+    label: "Button",
+    leftIcon: true,
+    size: "medium"
+  },
+
+  parameters: {
+    css: extractCSSForClasses(CSS, ["button", "button--primary", "button__icon"]),
+
+    docs: {
+      source: {
+        code: generateHTMLWithCSS({
+          label: "Button"
+        }, ["button", "button--primary button__icon"]),
+      }
+    }
   }
 };
