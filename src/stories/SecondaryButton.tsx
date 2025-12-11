@@ -1,9 +1,9 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import './button.css';
+import './Button.css';
 
-export interface ButtonProps {
+export interface SecondaryButtonProps {
   outline?: boolean;
   backgroundColor?: string;
   size?: 'small' | 'medium' | 'large';
@@ -13,8 +13,8 @@ export interface ButtonProps {
   disabled?: boolean; // Added disabled boolean
 }
 
-/** Primary UI component for user interaction */
-export const Button = ({
+/** Secondary UI component for user interaction */
+export const SecondaryButton = ({
   outline = false,
   size = 'medium',
   backgroundColor,
@@ -22,12 +22,12 @@ export const Button = ({
   label,
   disabled = false, // Default value for disabled
   ...props
-}: ButtonProps) => {
+}: SecondaryButtonProps) => {
   const border = outline ? 'outline' : '';
   return (
      <button
       type="button"
-      className={['button button--primary', `button--${size}`, border].join(' ')}
+      className={['button button--secondary', `button--${size}`, border].join(' ')}
       style={{ backgroundColor }}
       disabled={disabled} // Applied disabled attribute
       {...props}

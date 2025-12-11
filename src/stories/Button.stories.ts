@@ -8,7 +8,7 @@ import CSS from './button.css?raw';
 
 
 const meta = {
-  title: 'Components/Button',
+  title: 'Components/Buttons/Primary',
   component: Button,
   parameters: {
      layout: 'centered',
@@ -52,8 +52,9 @@ ${cssCode}
 
 export const Primary: Story = {
   args: {
-    primary: true,
     label: 'Button',
+    leftIcon: false,
+    outline: false
   },
   parameters: {
     css: extractCSSForClasses(CSS, ['button', 'button--primary', 'button--primary:hover']),
@@ -68,14 +69,7 @@ export const Primary: Story = {
   },
 };
 
-export const Secondary: Story = {
-  args: {
-    label: 'Button',
-  },
-  parameters: {
-    css: extractCSSForClasses(CSS, ['button', 'button--secondary']),
-  },
-};
+
 
 export const Large: Story = {
   args: {
@@ -99,7 +93,6 @@ export const Small: Story = {
 
 export const LeftIcon: Story = {
   args: {
-    primary: true,
     label: "Button",
     leftIcon: true,
     size: "medium"
@@ -116,4 +109,34 @@ export const LeftIcon: Story = {
       }
     }
   }
+};
+
+export const Outline: Story = {
+  args: {
+    label: "Button",
+    leftIcon: false,
+    outline: true
+  },
+
+  parameters: {
+    css: extractCSSForClasses(CSS, ["button", "button--primary", "button--primary:hover"]),
+
+    docs: {
+      source: {
+        code: generateHTMLWithCSS({
+          label: "Button"
+        }, ["button", "button--primary", "button--primary:hover"])
+      }
+    }
+  }
+};
+
+export const Disabled: Story = {
+  args: {
+    label: 'Disabled Button',
+    disabled: true,
+  },
+  parameters: {
+    css: extractCSSForClasses(CSS, ['button', 'button--primary', 'button--primary:disabled']),
+  },
 };

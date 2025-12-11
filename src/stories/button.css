@@ -8,6 +8,8 @@
   font-family: var(--Font-Family-Base);
   border-radius: var(--Button-Primary-Border-Radius);
 }
+
+/* Primary Button Styles */
 .button--primary {
   background-color: var(--Button-Primary-Default);
   border: 1px solid var(--Button-Primary-Default);
@@ -18,19 +20,103 @@
   border: 1px solid var(--Button-Primary-Hover);
   color: var(--White);
 }
+
+/* Primary Button Focus Styles */
+.button--primary:focus {
+  background-color: var(--Button-Primary-Focus);
+  border: 1px solid var(--Button-Primary-Focus-Border);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Primary Button Disabled Styles */
+.button--primary:disabled {
+  background-color: var(--Button-Primary-Disabled);
+  border: 1px solid var(--Button-Primary-Disabled-Border);
+  color: var(--Gray-500);
+  cursor: not-allowed;
+}
+
+/* Primary Button Outline Styles */
 .button--primary.outline {
   background-color: var(--White);
   color: var(--Button-Primary-Default);
 }
+.button--primary.outline:hover {
+  background-color: var(--White);
+  border: 1px solid var(--Button-Primary-Hover);
+  color: var(--Button-Primary-Hover);
+}
+
+/* Primary Button Outline Focus Styles */
+.button--primary.outline:focus {
+  background-color: var(--White);
+  border: 1px solid var(--Button-Primary-Focus);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  color: var(--Button-Primary-Focus);
+}
+
+/* Primary Button Outline Disabled Styles */
+.button--primary.outline:disabled {
+  background-color: var(--White);
+  border: 1px solid var(--Button-Primary-Disabled-Border);
+  color: var(--Gray-500);
+  cursor: not-allowed;
+}
+
+/* Secondary Button Styles */
 .button--secondary {
   background-color: var(--Button-Secondary-Default);
   border: 1px solid var(--Button-Secondary-Default);
   color: var(--White);
 }
+.button--secondary:hover {
+  background-color: var(--Button-Secondary-Hover);
+  border: 1px solid var(--Button-Secondary-Hover);
+  color: var(--White);
+}
+
+/* Secondary Button Focus Styles */
+.button--secondary:focus {
+  background-color: var(--Button-Secondary-Focus);
+  border: 1px solid var(--Button-Secondary-Focus-Border);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Secondary Button Disabled Styles */
+.button--secondary:disabled {
+  background-color: var(--Button-Secondary-Disabled);
+  border: 1px solid var(--Button-Secondary-Disabled-Border);
+  color: var(--Gray-500);
+  cursor: not-allowed;
+}
+
+/* Secondary Button Outline Styles */
 .button--secondary.outline {
   background-color: var(--White);
   color: var(--Button-Secondary-Default);
 }
+.button--secondary.outline:hover {
+  background-color: var(--White);
+  border: 1px solid var(--Button-Secondary-Hover);
+  color: var(--Button-Secondary-Hover);
+}
+
+/* Secondary Button Outline Focus Styles */
+.button--secondary.outline:focus {
+  background-color: var(--White);
+  border: 1px solid var(--Button-Secondary-Focus);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  color: var(--Button-Secondary-Focus);
+}
+
+/* Secondary Button Outline Disabled Styles */
+.button--secondary.outline:disabled {
+  background-color: var(--White);
+  border: 1px solid var(--Button-Secondary-Disabled-Border);
+  color: var(--Gray-500);
+  cursor: not-allowed;
+}
+
 .button--small {
   padding: 10px 16px;
   font-size: 12px;
