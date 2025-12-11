@@ -21,18 +21,7 @@
   --Theme-Link-Colors-Default: var(--Blue-600);
   --Theme-Link-Colors-Dark: var(--Blue-700);
   --Theme-Link-Colors-Light: var(--Blue-400);
-  --White: #FFFFFFFF;
-  --White-50: #FFFFFF80;
-  --White-30: #FFFFFF4D;
-  --White-10: #FFFFFF1A;
-  --Transparent: #FFFFFF00;
-  --Black: #000000FF;
-  --Black-70: #FFFFFFFF;
-  --Black-60: #FFFFFFFF;
-  --Black-50: #00000080;
-  --Black-30: #0000004D;
-  --Black-10: #0000001A;
-  --Black-2: #00000005;
+
   --Theme-Alert-Base: var(--Blue-600);
  
   --Button-Grid-Button-Grid-Button-Border-Radius: var(--Border-radius-xs);
@@ -69,13 +58,9 @@
   --Theme-Navigation-Default: var(--Blue-800);
   --Theme-Navigation-Dark: var(--Blue-900);
   --Theme-Navigation-Nav-Item-Secondary: #2662AAFF;
-  --Theme-Spacing-form-label-lg: 200px;
-  --Theme-Spacing-form-label-md: 200px;
-  --Theme-Spacing-spacing-xl: var(--Global-Spacing-spacing-40);
-  --Theme-Spacing-spacing-lg: var(--Global-Spacing-spacing-32);
-  --Theme-Spacing-spacing-md: var(--Global-Spacing-spacing-24);
-  --Theme-Spacing-spacing-s: var(--Global-Spacing-spacing-16);
-  --Theme-Spacing-spacing-xs: var(--Global-Spacing-spacing-8);
+  --form-label-lg: 200px;
+  --form-label-md: 200px;
+
   --Theme-Typography-h1-Weight: String value;
   --Theme-Typography-h1-Weight-2: String value;
   --Theme-Typography-h1-Size: 32px;
@@ -87,12 +72,63 @@
   --Theme-Typography-Type-Color: #372F2DFF;*/
 
 
+
+/* Theme Styles */
+
+  /* Primary Colors */
+
+  --Theme-Primary-Colors-Light: var(--Blue-100);
+  --Theme-Primary-Colors-Default: var(--Blue-600);
+  --Theme-Primary-Colors-Dark: var(--Blue-800);
+
+  /* Colors */
+
+  --White: rgba(255, 255, 255, 1.00);
+  --White-50: rgba(255, 255, 255, 0.50);
+  --White-30: rgba(255, 255, 255, 0.30);
+  --White-10: rgba(255, 255, 255, 0.10);
+  --Transparent: rgba(255, 255, 255, 0.00);
+  --Black: rgba(0, 0, 0, 1.00);
+  --Black-70: rgba(255, 255, 255, 1.00);
+  --Black-60: rgba(255, 255, 255, 1.00);
+  --Black-50: rgba(0, 0, 0, 0.50);
+  --Black-30: rgba(0, 0, 0, 0.30);
+  --Black-10: rgba(0, 0, 0, 0.10);
+  --Black-2: rgba(0, 0, 0, 0.02);
+
+
+  /* Button Styles */
+
+  --Button-Primary-Border-Radius: var(--Border-radius-xs);
+  --Button-Primary-Default: var(--Blue-600);
+  --Button-Primary-Hover: var(--Blue-700);
+  --Button-Primary-Focus: var(--Blue-500);
+  --Button-Primary-Focus-Border: var(--Blue-500);
+  --Button-Primary-Disabled: var(--Blue-100);
+  --Button-Primary-Disabled-Text: var(--Gray-500);
+
+  --Button-Secondary-Border-Radius: var(--Border-radius-xs);
+  --Button-Secondary-Default: var(--Gray-600);
+  --Button-Secondary-Hover: var(--Gray-700);
+  --Button-Secondary-Focus: var(--Gray-700);
+  --Button-Secondary-Focus-Border: var(--Black);
+  --Button-Secondary-Disabled: var(--Gray-100);
+
+
+
 /* Global Styles */
 
   /* Fonts */
 
   --Font-Family-Base: 'Source Sans 3', sans-serif;
 
+  /* Spacing */
+
+  --spacing-xl: 40px;
+  --spacing-lg: 32px;
+  --spacing-md: 24px;
+  --spacing-s: 16px;
+  --spacing-xs: 8px;
   /* Colors */
 
   --Blue-50: #F0F8FFFF;
@@ -176,39 +212,6 @@
 
   --Spacing-null: 0rem;
 
-/* Theme styles */
-
-  /* Colors */
-
-  --White: rgba(255, 255, 255, 1.00);
-  --White-50: rgba(255, 255, 255, 0.50);
-  --White-30: rgba(255, 255, 255, 0.30);
-  --White-10: rgba(255, 255, 255, 0.10);
-  --Transparent: rgba(255, 255, 255, 0.00);
-  --Black: rgba(0, 0, 0, 1.00);
-  --Black-70: rgba(255, 255, 255, 1.00);
-  --Black-60: rgba(255, 255, 255, 1.00);
-  --Black-50: rgba(0, 0, 0, 0.50);
-  --Black-30: rgba(0, 0, 0, 0.30);
-  --Black-10: rgba(0, 0, 0, 0.10);
-  --Black-2: rgba(0, 0, 0, 0.02);
-
-
-  /* Button Styles */
-  --Button-Primary-Border-Radius: var(--Border-radius-xs);
-  --Button-Primary-Default: var(--Blue-600);
-  --Button-Primary-Hover: var(--Blue-700);
-  --Button-Primary-Focus: var(--Blue-500);
-  --Button-Primary-Focus-Border: var(--Blue-500);
-  --Button-Primary-Disabled: var(--Blue-100);
-  --Button-Primary-Disabled-Text: var(--Gray-500);
-
-  --Button-Secondary-Border-Radius: var(--Border-radius-xs);
-  --Button-Secondary-Default: var(--Gray-600);
-  --Button-Secondary-Hover: var(--Gray-700);
-  --Button-Secondary-Focus: var(--Gray-700);
-  --Button-Secondary-Focus-Border: var(--Black);
-  --Button-Secondary-Disabled: var(--Gray-100);
 }
 
 body {

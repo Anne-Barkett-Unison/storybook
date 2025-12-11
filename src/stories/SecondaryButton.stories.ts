@@ -71,10 +71,31 @@ export const Secondary: Story = {
 
 export const Disabled: Story = {
   args: {
-    label: 'Disabled Secondary Button',
+    label: "Disabled Button",
     disabled: true,
   },
   parameters: {
     css: extractCSSForClasses(CSS, ['button', 'button--secondary', 'button--secondary:disabled']),
   },
+};
+
+export const Outline: Story = {
+  args: {
+    label: "Button",
+    leftIcon: false,
+    outline: true,
+    disabled: false
+  },
+
+  parameters: {
+    css: extractCSSForClasses(CSS, ["button", "button--secondary", "button--secondary:hover"]),
+
+    docs: {
+      source: {
+        code: generateHTMLWithCSS({
+          label: "Secondary Button"
+        }, ["button", "button--secondary", "button--secondary:hover"])
+      }
+    }
+  }
 };
