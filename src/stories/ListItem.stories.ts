@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
+import { renderToStaticMarkup } from 'react-dom/server';
 import { ListItem } from './ListItem';
-
 import CSS from './ListItem.css?raw';
 
 function extractCSSForClasses(css: string, classNames: string[]): string {
@@ -9,33 +8,71 @@ function extractCSSForClasses(css: string, classNames: string[]): string {
   
   classNames.forEach(className => {
     const escapedClass = className.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const regex = new RegExp(`\\.${escapedClass}\\s*\\{[^}]*\\}`, 'gs');
-    const matches = css.match(regex);
-    if (matches) {
-      rules.push(...matches);
+    
+    // Match basic class
+    const basicRegex = new RegExp(`\\.${escapedClass}\\s*\\{[^}]*\\}`, 'gs');
+    const basicMatches = css.match(basicRegex);
+    if (basicMatches) {
+      rules.push(...basicMatches);
+    }
+    
+    // Match pseudo-classes (:hover, :focus, :active, etc.)
+    const pseudoRegex = new RegExp(`\\.${escapedClass}:(hover|focus|active|disabled|focus-visible|focus-within|checked|visited|link|first-child|last-child|nth-child\\([^)]*\\)|not\\([^)]*\\))\\s*\\{[^}]*\\}`, 'gs');
+    const pseudoMatches = css.match(pseudoRegex);
+    if (pseudoMatches) {
+      rules.push(...pseudoMatches);
+    }
+    
+    // Match pseudo-elements (::before, ::after, etc.)
+    const pseudoElementRegex = new RegExp(`\\.${escapedClass}::(before|after|first-letter|first-line|placeholder|selection)\\s*\\{[^}]*\\}`, 'gs');
+    const pseudoElementMatches = css.match(pseudoElementRegex);
+    if (pseudoElementMatches) {
+      rules.push(...pseudoElementMatches);
     }
   });
+  
   return rules.join('\n\n');
 }
 
-function generateHTMLWithCSS(args: any, classes: string[]) {
-  const classList = classes.join(' ');
-  const htmlCode = `<button class="${classList}">${args.label}</button>`;
-  const cssCode = extractCSSForClasses(CSS, classes);
+function extractClassesFromHTML(html: string): string[] {
+  const classMatches = html.match(/class="([^"]*)"/g);
+  if (!classMatches) return [];
   
-  return `${htmlCode}
-
-<style>
-${cssCode}
-</style>`;
+  const allClasses = new Set<string>();
+  
+  classMatches.forEach(match => {
+    const classes = match.replace(/class="([^"]*)"/, '$1').split(' ');
+    classes.forEach(cls => {
+      if (cls.trim()) {
+        allClasses.add(cls.trim());
+      }
+    });
+  });
+  
+  return Array.from(allClasses);
 }
-
 
 const meta = {
   title: 'Components/Lists/Item',
   component: ListItem,
   parameters: {
     layout: 'centered',
+    docs: {
+      source: {
+        transform: (code: string, storyContext: any) => {
+          const { args } = storyContext;
+          const htmlCode = renderToStaticMarkup(ListItem(args));
+          const classes = extractClassesFromHTML(htmlCode);
+          const cssCode = extractCSSForClasses(CSS, classes);
+          
+          return `${htmlCode}
+
+<style>
+${cssCode}
+</style>`;
+        },
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -49,34 +86,10 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-/*
- 'list-item',
-    `list-item--${size}`,
-    checkbox && 'list-item--checkbox',
-    chevron && 'list-item--chevron',
-    icon && 'list-item--icon',
-    active && 'list-item--active',
-*/
+
 export const Default: Story = {
   args: {
     label: 'Default List Item',
-    size: 'default',
-    checkbox: false,
-    chevron: false,
-    icon: false,
-    active: false,
-    disabled: false
-  },
- parameters: {
-    css: extractCSSForClasses(CSS, ['list-item', 'list-item--default', 'list-item:hover', 'list-item:active']),
-    docs: {
-      source: {
-        code: generateHTMLWithCSS(
-          { label: 'Button' },
-          ['list-item', 'list-item--default', 'list-item:hover', 'list-item:active']
-        ),
-      },
-    },
   },
 };
 
@@ -85,34 +98,12 @@ export const WithCheckbox: Story = {
     label: 'List Item with Checkbox',
     checkbox: true,
   },
-  parameters: {
-    css: extractCSSForClasses(CSS, ['list-item', 'list-item--default','list-item--checkbox']),
-    docs: {
-      source: {
-        code: generateHTMLWithCSS(
-          { label: 'Button' },
-          ['list-item', 'list-item--default', 'list-item--checkbox']
-        ),
-      },
-    },
-  },
 };
 
 export const WithChevron: Story = {
   args: {
     label: 'List Item with Chevron',
     chevron: true,
-  },
-  parameters: {
-    css: extractCSSForClasses(CSS, ['list-item', 'list-item--default', 'list-item--chevron']),
-    docs: {
-      source: {
-        code: generateHTMLWithCSS(
-          { label: 'Button' },
-          ['list-item', 'list-item--default', 'list-item--chevron']
-        ),
-      },
-    },
   },
 };
 
@@ -121,17 +112,6 @@ export const WithIcon: Story = {
     label: 'List Item with Icon',
     icon: true,
   },
-    parameters: {
-    css: extractCSSForClasses(CSS, ['list-item', 'list-item--default', 'list-item--icon ']),
-    docs: {
-      source: {
-        code: generateHTMLWithCSS(
-          { label: 'Button' },
-          ['list-item', 'list-item--default', 'list-item--icon']
-        ),
-      },
-    },
-  },
 };
 
 export const Small: Story = {
@@ -139,27 +119,11 @@ export const Small: Story = {
     label: 'Small List Item',
     size: 'small',
   },
-    parameters: {
-    css: extractCSSForClasses(CSS, ['list-item', 'list-item--small']),
-    docs: {
-      source: {
-        code: generateHTMLWithCSS(
-          { label: 'Button' },
-          ['list-item', 'list-item--small']
-        ),
-      },
-    },
-  },
 };
 
 export const Active: Story = {
   args: {
-    label: "Default List Item",
-    size: "default",
-    checkbox: false,
-    chevron: false,
-    icon: false,
+    label: "Active List Item",
     active: true,
-    disabled: false
-  }
+  },
 };
