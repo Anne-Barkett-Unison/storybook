@@ -1,0 +1,49 @@
+.list-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid transparent;
+  transition: background-color 0.2s, border-color 0.2s;
+  cursor:pointer;
+  padding: var(--spacing-xs) var(--spacing-s);
+  gap: 0.625rem;
+  background-color: var(--White)
+}
+
+.list-item--default {
+  font-size: 16px;
+}
+
+.list-item--small {
+  font-size: 14px;
+}
+
+.list-item:hover {
+   background: var(--Theme-Primary-Colors-Light);
+   color:var(--Black);
+}
+
+.list-item:active, .list-item:focus, .list-item--active{
+  background: var(--Theme-Primary-Colors-Default);
+  color:var(--White);
+}
+
+.list-item:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.list-item__checkbox {
+  margin-right: var(--spacing-xs);
+}
+
+.list-item__icon {
+  margin-right: var(--spacing-xs);
+}
+
+.list-item__label {
+  flex-grow: 1;
+}
+
+.list-item__chevron {
+  margin-left: var(--spacing-xs);
+}
